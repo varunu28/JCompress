@@ -1,9 +1,20 @@
 # JCompress
 A text compression command line tool using Huffman tree
 
-## ToDo
- - [X] Write the frequency map to the header of output file
- - [X] Write the encoded result to an output file
- - [X] Add functionality to build tree by using header
- - [X] Add functionality to decode and write the decoded output to a file
- - [ ] Convert the program to a command line utility
+## How to build?
+```agsl
+./gradlew shadowJar
+alias jcompress='java -jar build/libs/jcompress-shadow.jar'
+```
+
+## How to run?
+```agsl
+// Encoding
+jcompress --encode -i data.txt -o encoded_data.txt -h header.txt
+
+// Decoding
+jcompress --decode -i encoded_data.txt -o decoded_output.txt -h header.txt
+
+// Verify
+diff decoded_output.txt data.txt // Empty result
+```
